@@ -25,7 +25,7 @@ workflow EHO {
             sex = sex,
             ref_fasta = ref_fasta,
             ref_fasta_index = ref_fasta_index,
-            variant_catalog = variant_catalog
+            variant_catalog = variant_catalog,
             mode = mode
     }
 
