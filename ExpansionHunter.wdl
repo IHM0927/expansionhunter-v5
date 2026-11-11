@@ -10,6 +10,7 @@ workflow EHO {
 		File crai
         String? name
         String sex
+		String mode = "streaming"
         
         # References
         File ref_fasta
@@ -25,6 +26,7 @@ workflow EHO {
             ref_fasta = ref_fasta,
             ref_fasta_index = ref_fasta_index,
             variant_catalog = variant_catalog
+            mode = mode
     }
 
 	output {
@@ -44,6 +46,7 @@ task EHO {
         String name = basename(cram, ".cram")
         String sex
         File variant_catalog
+		String mode = "streaming"
 
         # References
         File ref_fasta
@@ -57,7 +60,7 @@ task EHO {
 
     command <<<
         set -e 
-        ExpansionHunter --reads ~{cram} --reference ~{ref_fasta} --variant-catalog ~{variant_catalog} --output-prefix ~{name}.EH --sex ~{sex}
+        ExpansionHunter --reads ~{cram} --reference ~{ref_fasta} --variant-catalog ~{variant_catalog} --output-prefix ~{name}.EH --sex ~{sex} --analysis-mode ~{mode} --threads ~{cpu} 
     >>>
 	
 	runtime {
