@@ -2,3 +2,6 @@ version: 1.2
 workflows:
   - subclass: WDL
     primaryDescriptorPath: /ExpansionHunter.wdl
+workflows:
+  - subclass: WDL
+    primaryDescriptorPath: /merge_eh_vcfs.wdl
